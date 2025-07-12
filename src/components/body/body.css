@@ -1,1 +1,6 @@
 
+
+.bodyDiv{
+    background-color: var(--bg1-color);
+    height: 94vh;
+}

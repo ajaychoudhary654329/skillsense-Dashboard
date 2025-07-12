@@ -1,0 +1,51 @@
+.parentdiv-employeebar{
+
+    width: 24%;
+    display: flex;
+    height: 67vh ;    
+    background-color: red;
+    border: 1px solid var(--font-greycolor);
+    border-radius: 10px;
+}
+
+.employee1{
+
+    display: flex;
+    padding: 10px 10px 10px 10px;
+    gap: 12px;
+    height: 52px;width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border: 1px solid var(--font-greycolor);
+
+    img{
+        height: 51px;
+        width: 52px;
+    }
+    
+}
+
+.parentdiv-employeeDetails{
+
+    width: 76%;
+    display: flex;
+    height: 67vh;
+    background-color: blue;
+    border-radius: 10px;
+     
+}
+.parentForBoth{
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    gap: 10px;
+}
+
+.employeedetails1{
+    padding-top: 5px; 
+    line-height: 1.4;
+}
+.para1{
+    font-size: 20px;
+    font-weight: 500;
+}

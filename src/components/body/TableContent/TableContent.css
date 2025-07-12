@@ -1,0 +1,8 @@
+.ParentDiv{
+
+    height: calc(94vh - 150px);
+    margin-right: 102px;
+    margin-left: 50px;
+    background-color: #ffffff;
+    border-color: 3px solid var(--bg2-color);
+}

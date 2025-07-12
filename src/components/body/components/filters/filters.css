@@ -1,7 +1,7 @@
 .Parent{
     display: flex;
     justify-content: space-between;
-    background-color: var(--bg1-color);
+   
 }
 .first{
     display: flex;

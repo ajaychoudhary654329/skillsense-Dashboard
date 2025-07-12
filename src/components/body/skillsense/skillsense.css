@@ -7,3 +7,10 @@
         font-weight: 900;
     }
 }
+
+.parent{
+    display: flex;
+    justify-content: space-between;
+        padding-right: 13%;
+    
+}
