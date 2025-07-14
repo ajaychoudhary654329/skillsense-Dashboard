@@ -1,0 +1,68 @@
+.raj-kumar{
+
+    display: flex;
+    gap: 10px;
+    padding: 13px 10px 10px 33px;
+
+    img{
+        height: 106px;
+        width: 106px;
+    }
+}
+
+.detailsof-employeer{
+
+        padding: 18px 10px 10px 10px;
+        line-height: 1.2;
+}
+.p1{
+    font-size: 35px;
+    font-weight: bold;
+}
+.s1{
+    color: var(--font-greycolor);
+}
+
+.dates-div{
+ 
+   padding: 40px 10px 10px 10px;
+   line-height: 1.6;
+
+}
+
+.parentdiv-for-employeedetails{
+
+    display: flex;
+    gap: 65px ; 
+    height: 125px;
+    position: relative; 
+    flex-direction: row;
+    width: 100%;
+    /* border: 1px solid var(--font-greycolor); */
+    border-top-left-radius:10px; 
+    border-top-right-radius: 10px;
+    background-color:var(--bg2-color);
+}
+
+.container-for-employeeDetails{
+    width: 100%;
+}
+
+.s2{
+    color: var(--font-greycolor);
+}
+.s3{
+    color: var(--font-greycolor);
+}
+.s4{
+    color: var(--font-greycolor);
+}
+.p2{
+    color: red;
+}
+
+.tabsfor-otherStuff{
+
+    padding-left: 25px;
+    background-color: var(--bg2-color);
+}

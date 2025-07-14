@@ -3,17 +3,14 @@ import EmployeeDetails from '../EmployeeDetails/employeeDetails';
 import './employeeBar.css'; 
 
 
-
 const EmployeeBar = ()=>{
 
-
-  const employees = [ {
-
-    name : "Ujjwal Sharma ",
-    id: "660638",
-    code : "A0" ,
-    image : myimage10,
-  } , {
+  const employees = [  {
+    name : "Ujjwal Sharma " ,
+    id: "660669",
+    code : " TW " ,
+    image : myimage10 , 
+  } ,  {
     name : "Raj Kumar " ,
     id: "660669",
     code : " TW " ,
@@ -54,42 +51,32 @@ const EmployeeBar = ()=>{
     code : "A5",
     image: myimage10 
   }
-
 ]
 
   return(
-  
+
      <> 
-       
         <div className='parentForBoth'>
 
 
         <div className='parentdiv-employeebar'>
-        
-         <div className='employee1'>
-             
-          <img src={myimage10} /> 
+         
+          {employees.map((emp , idx )=> (
 
-          <div className='employeedetails1'>
+           <div className='employee' key={idx}>
+          
+            <img src={emp.image} /> 
+         
+            <div className='employeedetails'>
 
-              <p className='para1'>Ujjwal Sharma</p>
-              <p className='para2'> 660638 | A0 </p>
+              <p className='para1'>{emp.name}</p>
+              <p className='para2'> {emp.id} | {emp.code} </p>
 
           </div>
            
          </div>
-         
+          ))}
         </div>
-
-
-
-
-
-
-
-
-
-
 
         <div className='parentdiv-employeeDetails'>
          
