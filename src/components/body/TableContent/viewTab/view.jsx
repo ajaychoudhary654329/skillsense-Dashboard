@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./view.css";
 import myimage8 from "../../../../assets/human_icon.png";
 import { Tabs, Tab, Box, TextField, InputAdornment } from "@mui/material";
@@ -23,6 +23,16 @@ const View = () => {
     }
     const [checked, setChecked] = useState(true);
     const [selectedTab, setSelectedTab] = useState(0);
+      const [employeeCount, setEmployeeCount] =useState({ active: 0, inactive: 0 })
+
+    useEffect(()=>{
+        
+        
+    },[checked])
+
+    const handleLengthUpdate = (length) => {
+    setEmployeeCount(length);
+  };
 
 
     const handleTabChange = (event, newValue) => {
@@ -33,7 +43,7 @@ const View = () => {
 
         switch (selectedTab) {
             case 0:
-                return <div><EmployeeBar /> </div>;
+                return <div><EmployeeBar state = {checked} onLengthChange={handleLengthUpdate}  /> </div>;
             case 1:
                 return <div><p>No content , so just hello</p></div>;
         }
@@ -99,7 +109,7 @@ const View = () => {
 
                     <div className="active-InactiveTabs">
 
-                        <p style={{ color: checked ? "black" : "grey", fontWeight: 600 }}>Active(27)</p>
+                        <p style={{ color: checked ? "black" : "grey", fontWeight: 600 }}>Active({employeeCount.active || 0})</p>
 
                         <Switch {...label}
                             checked={checked}
@@ -114,35 +124,35 @@ const View = () => {
                                 },
                             }}
                         />
-                        <p style={{ color: checked ? "grey " : "black", fontWeight: 500 }}>Inactive(05)</p>
+                        <p style={{ color: checked ? "grey " : "black", fontWeight: 500 }}>Inactive({employeeCount.inactive || 0})</p>
 
                     </div>
 
                     <div className="SearchBox">
 
-                        <TextField  
-                           variant="outlined"
-                           placeholder="Search by Name , Staff-ID "
-                           value ={searchText}
-                           onChange={(e)=>setSearchText(e.target.value)}
-                           
-                           InputProps={{
+                        <TextField
+                            variant="outlined"
+                            placeholder="Search by Name , Staff-ID "
+                            value={searchText}
+                            onChange={(e) => setSearchText(e.target.value)}
 
-                            endAdornment:(
-                                <InputAdornment position="end">
-                                    <SearchIcon style={{color:'var(--primary)'}}/>
-                                </InputAdornment>
-                            ),
-                              style:{
-                                borderRadius: '7px',
-                                color:'grey',
-                                fontWeight: '600',
-                                height:'40px'
+                            InputProps={{
 
-                              }
-                           }}
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <SearchIcon style={{ color: 'var(--primary)' }} />
+                                    </InputAdornment>
+                                ),
+                                style: {
+                                    borderRadius: '7px',
+                                    color: 'grey',
+                                    fontWeight: '600',
+                                    height: '40px'
 
-                           />
+                                }
+                            }}
+
+                        />
                     </div>
 
                 </div>
