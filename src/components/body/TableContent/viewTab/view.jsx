@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import "./view.css";
 import myimage8 from "../../../../assets/human_icon.png";
 import { Tabs, Tab, Box, TextField, InputAdornment } from "@mui/material";
@@ -8,6 +9,8 @@ import EmployeeBar from "../EmployeeBar/employeeBar";
 import EmployeeDetails from "../EmployeeDetails/employeeDetails";
 import Switch from '@mui/material/Switch';
 import SearchIcon from '@mui/icons-material/Search';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 // import { TextField, InputAdornment, IconButton } from '@mui/material';
 
@@ -23,16 +26,21 @@ const View = () => {
     }
     const [checked, setChecked] = useState(true);
     const [selectedTab, setSelectedTab] = useState(0);
-      const [employeeCount, setEmployeeCount] =useState({ active: 0, inactive: 0 })
+    const [employeeCount, setEmployeeCount] = useState({ active: 0, inactive: 0 })
+    const [anchorEl, setanchorEl] = useState(null);
+    const open = Boolean(anchorEl);
 
-    useEffect(()=>{
-        
-        
-    },[checked])
+    const handleClick = (event) => {
+        setanchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    }
 
     const handleLengthUpdate = (length) => {
-    setEmployeeCount(length);
-  };
+        setEmployeeCount(length);
+    };
 
 
     const handleTabChange = (event, newValue) => {
@@ -43,35 +51,33 @@ const View = () => {
 
         switch (selectedTab) {
             case 0:
-                return <div><EmployeeBar state = {checked} onLengthChange={handleLengthUpdate}  /> </div>;
+                return <div><EmployeeBar state={checked} onLengthChange={handleLengthUpdate} /> </div>;
             case 1:
                 return <div><p>No content , so just hello</p></div>;
         }
     }
 
+
+    const [showDropdown, setShowDropdown] = useState(false);
+
     return (
         <>
-
             <div className="parentDiv">
-
-                <div className="buttonsDiv">
-
+                <div className="buttonsDiv" style={{ position: 'relative' }}>
                     <p style={{ padding: 10, fontWeight: 600 }}>View:</p>
-
                     <Box
                         sx={{
                             backgroundColor: '#fff',
                             borderRadius: '8px',
                             overflow: 'hidden',
                             display: 'inline-flex',
-                            // boxShadow: '0 0 2px rgba(0,0,0,0.2)'
                         }}
                     >
                         <Tabs
                             value={selectedTab}
                             onChange={handleTabChange}
                             variant="fullWidth"
-                            TabIndicatorProps={{ style: { display: 'none' } }} // hide default underline
+                            TabIndicatorProps={{ style: { display: 'none' } }}
                             sx={{
                                 minHeight: '40px',
                                 '& .MuiTab-root': {
@@ -85,13 +91,12 @@ const View = () => {
                                     gap: 1,
                                     color: '#000'
                                 },
-
                                 '& .Mui-selected': {
                                     backgroundColor: '#171C8F',
-                                    color: '#fff !important', // text has to become white 
+                                    color: '#fff !important',
                                 },
                                 '& .Mui-selected .MuiTab-iconWrapper': {
-                                    color: '#fff', // icons will have to become white 
+                                    color: '#fff',
                                 },
                                 '& .MuiTabs-flexContainer': {
                                     border: '1px solid #ccc',
@@ -103,6 +108,8 @@ const View = () => {
                             <Tab icon={<ViewListIcon />} label="Stations" iconPosition="start" />
                         </Tabs>
                     </Box>
+
+
                 </div>
 
                 <div className="parent1Div">

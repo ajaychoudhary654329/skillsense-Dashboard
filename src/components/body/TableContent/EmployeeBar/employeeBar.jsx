@@ -3,7 +3,7 @@ import myimage10 from '../../../../assets/circle_personlogo.png';
 import EmployeeDetails from '../EmployeeDetails/employeeDetails';
 import './employeeBar.css';
 
-const EmployeeBar = ({ state , onLengthChange }) => {
+const EmployeeBar = ({ state, onLengthChange }) => {
   const [data, setData] = useState([]);
 
   const employees = [
@@ -23,14 +23,14 @@ const EmployeeBar = ({ state , onLengthChange }) => {
     const filteredInactive = employees.filter(emp => emp.status === false);
     const filtered = employees.filter(emp => emp.status === state);
     setData(filtered);
-    console.log(data);
 
-      onLengthChange({
+    onLengthChange({
       active: filteredActive.length,
       inactive: filteredInactive.length,
     });
-    
-  }, [state]); // Only run when activeStatus changes
+    console.log(data);
+
+  }, [state]);
 
   return (
     <div className='parentForBoth'>
