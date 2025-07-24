@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Box, Divider } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const options = [
   "John smith",
@@ -31,6 +32,19 @@ const Header = ({ cart }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [value, setValue] = React.useState(options[0]);
   const open = Boolean(anchorEl);
+  const [cartAnchorEl, setCartAnchorEl] = useState(null);
+  const cartItems = useSelector((state) => state.cart.items);
+
+  // cart logic over here 
+
+  const handleCartclick = (event) => {
+    setCartAnchorEl(event.currentTarget);
+  }
+  const handleCartClose = () => {
+    setCartAnchorEl(null)
+  }
+
+  // menu items opening logic over here 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -61,15 +75,43 @@ const Header = ({ cart }) => {
 
             {/* Cart icon with badge showing number of items */}
             <Link to="/cart">
-              <Badge badgeContent={cart?.length || 0} color="error" overlap="circular" sx={{ position: 'relative', top: '-8px', right: '-8px' }}>
+              <Badge
+                badgeContent={cartItems.length > 0 ? `+${cartItems.length}` : null}
+                color="error"
+                overlap="circular"
+                sx={{
+                  position: 'relative',
+                  top: '-8px',
+                  right: '-8px',
+                  '& .MuiBadge-badge': {
+                    fontSize: '0.75rem',
+                    padding: '0 6px',
+                    borderRadius: '8px',
+                    backgroundColor: '#f44336',
+                    color: 'white',
+                  },
+                }}
+              >
                 <IconButton>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="home-icon-class">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="home-icon-class"
+                  >
                     <circle cx="9" cy="21" r="1" />
                     <circle cx="20" cy="21" r="1" />
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61l1.38-7.39H6" />
                   </svg>
                 </IconButton>
               </Badge>
+
             </Link>
             <img src={myimage5} alt="home-icon" className="home-icon-class" />
 
@@ -95,7 +137,7 @@ const Header = ({ cart }) => {
                 aria-haspopup="true"
                 onClick={handleClick}
               >
-                <img src={myimage7} alt="" />
+                <img src={myimage7} />
               </IconButton>
               <Menu
                 id="long-menu"
