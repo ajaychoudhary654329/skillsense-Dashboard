@@ -5,14 +5,15 @@ import myimage3 from "../../assets/searchBarlogo.png";
 import myimage4 from "../../assets/Marutilogo.png";
 import myimage5 from "../../assets/home_icon.png";
 import myimage6 from "../../assets/human_icon.png";
-
 import myimage7 from "../../assets/down_arrow.png";
 import "./header.css";
 import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Box, Divider } from "@mui/material";  
+import { Box, Divider } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const options = [
   "John smith",
@@ -25,7 +26,7 @@ const options = [
 
 const ITEM_HEIGHT = 48;
 
-const Header = () => {
+const Header = ({ cart }) => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [value, setValue] = React.useState(options[0]);
@@ -56,7 +57,22 @@ const Header = () => {
 
         <div className="header-section3">
           <div className="header-section3-child1">
+
+
+            {/* Cart icon with badge showing number of items */}
+            <Link to="/cart">
+              <Badge badgeContent={cart?.length || 0} color="error" overlap="circular" sx={{ position: 'relative', top: '-8px', right: '-8px' }}>
+                <IconButton>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="home-icon-class">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61l1.38-7.39H6" />
+                  </svg>
+                </IconButton>
+              </Badge>
+            </Link>
             <img src={myimage5} alt="home-icon" className="home-icon-class" />
+
           </div>
           <div className="header-section3-child2">
             <div className="select-wrapper">
@@ -112,11 +128,12 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Divider sx={{my:0,
-        backgroundColor:"#d0d2d4",
-        height:"0px",
-      }}/>
-      
+      <Divider sx={{
+        my: 0,
+        backgroundColor: "#d0d2d4",
+        height: "0px",
+      }} />
+
     </>
   );
 };

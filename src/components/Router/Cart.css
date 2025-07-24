@@ -1,0 +1,19 @@
+.parent-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f9;
+  height: 93vh;
+}
+
+.card-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 580px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--primary);
+}
